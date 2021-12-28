@@ -17,6 +17,7 @@
 |Parameter|Type|Necessary|Declaration|
 |:--:|:--:|:--:|------|
 |argv|\<list\>|Y|The args which was filtering by `run.py`. |
+
 **Output**
 |Type|Declaration|
 |:--:|:--:|
@@ -111,6 +112,7 @@
 |Type|Declaration|
 |:--:|:--:|
 |\<int\>|The result of running the method.|
+
 ***def CheckUserAgent(url, payload, showWAF)***
 `Check the vulnerability in http header with User--Agent parameter.`
 **Input**
@@ -123,6 +125,7 @@
 |Type|Declaration|
 |:--:|:--:|
 |\<int\>|The result of running the method.|
+
 ***CheckHeader(url, payload_id, basePayload, showWAF, encode_mode=0)***
 `Check the vulnerability with the rest of http header parameters.`
 **Input**
@@ -137,6 +140,7 @@
 |Type|Declaration|
 |:--:|:--:|
 |\<int\>|The result of running the method.|
+
 ***def CheckUri(url, payload, showWAF)***
 `Check the vulnerability with http uri.`
 **Input**
@@ -149,6 +153,7 @@
 |Type|Declaration|
 |:--:|:--:|
 |\<int\>|The result of running the method.|
+
 ***def CheckPOST(url, payload, showWAF, encode_mode=0)***
 `Check the vulnerability with http post data.`
 **Input**
@@ -162,6 +167,7 @@
 |Type|Declaration|
 |:--:|:--:|
 |\<int\>|The result of running the method.|
+
 ***def CheckPOST(url, payload, showWAF, encode_mode=0)***
 `Check the vulnerability with parameter data of the http get method.`
 **Input**
@@ -174,6 +180,7 @@
 |Type|Declaration|
 |:--:|:--:|
 |\<int\>|The result of running the method.|
+
 ***def checkVul(self, url, showWAF=0)***
 `Run all check method of the class.`
 **Input**
@@ -224,7 +231,6 @@
 |Type|Declaration|
 |:--:|:--:|
 |None|None|
-
 
 # JndiServer.py
 ##  def server(argv)
