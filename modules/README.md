@@ -5,6 +5,7 @@
 |Parameter|Type|Necessary|Declaration|
 |:--:|:--:|:--:|--|
 |msg|\<string\>|Y|The error message of very method of class. |
+
 **Output**
 |Type|Declaration|
 |:--:|:--:|
@@ -30,6 +31,7 @@
 |Parameter|Type|Necessary|Declaration|
 |:--:|:--:|:--:|:--|
 |url|string|Y|Generate the id by very url. |
+
 **Output**
 |Type|Declaration|
 |:--:|:--:|
@@ -42,6 +44,7 @@
 |Parameter|Type|Necessary|Declaration|
 |:--:|:--:|:--:|:--|
 |None|None|None|None|
+
 **Output**
 |Type|Declaration|
 |:--:|:--:|
@@ -54,6 +57,7 @@
 |Parameter|Type|Necessary|Declaration|
 |:--:|:--:|:--:|------|
 |payload_ids|\<string\>|Y|The payload url id to monitor. |
+
 **Output**
 |Type|Declaration|
 |:--:|:--:|
@@ -68,6 +72,7 @@
 |ip|\<string\>|Y|The public ip of local host. |
 |port|\<int\>|Y|The listener port of local host. |
 |payload_ids|\<string\>|Y|The payload_url_id to monitor. |
+
 **Output**
 |Type|Declaration|
 |:--:|:--:|
@@ -80,6 +85,7 @@
 |Parameter|Type|Necessary|Declaration|
 |:--:|:--:|:--:|------|
 |response_text|\<string\>|Y|The reponse of http request. |
+
 **Output**
 |Type|Declaration|
 |:--:|:--:|
@@ -92,6 +98,7 @@
 |Parameter|Type|Necessary|Declaration|
 |:--:|:--:|:--:|------|
 |target|\<string\>|Y|The target to verify with the fromat of domain or url. |
+
 **Output**
 |Type|Declaration|
 |:--:|:--:|
@@ -108,6 +115,7 @@
 |url|\<string\>|Y|The target to send http request. |
 |payload|\<string\>|Y|The payload to send. |
 |showWAF|\<int\>|Y|The optional to show waf rejecting information. |
+
 **Output**
 |Type|Declaration|
 |:--:|:--:|
@@ -121,6 +129,7 @@
 |url|\<string\>|Y|The target to send http request. |
 |payload|\<string\>|Y|The payload to send. |
 |showWAF|\<int\>|Y|The optional to show waf rejecting information. |
+
 **Output**
 |Type|Declaration|
 |:--:|:--:|
@@ -136,6 +145,7 @@
 |basePayload|\<string\>|Y|The bease payload which will be inserted with some payload and url tag in the mehtod. |
 |showWAF|\<int\>|Y|The optional to show waf rejecting information. |
 |encode_mode|\<string\>|N|The optional mode of url encode. |
+
 **Output**
 |Type|Declaration|
 |:--:|:--:|
@@ -149,6 +159,7 @@
 |url|\<string\>|Y|The target to send http request. |
 |payload|\<string\>|Y|The payload to send. |
 |showWAF|\<int\>|Y|The optional to show waf rejecting information. |
+
 **Output**
 |Type|Declaration|
 |:--:|:--:|
@@ -163,6 +174,7 @@
 |payload|\<string\>|Y|The payload to send. |
 |showWAF|\<int\>|Y|The optional to show waf rejecting information. |
 |encode_mode|\<string\>|N|The optional mode of url encode. |
+
 **Output**
 |Type|Declaration|
 |:--:|:--:|
@@ -176,6 +188,7 @@
 |url|\<string\>|Y|The target to send http request. |
 |payload|\<string\>|Y|The payload to send. |
 |showWAF|\<int\>|Y|The optional to show waf rejecting information. |
+
 **Output**
 |Type|Declaration|
 |:--:|:--:|
@@ -188,6 +201,7 @@
 |:--:|:--:|:--:|------|
 |url|\<string\>|Y|The target to send http request. |
 |showWAF|\<int\>|Y|The optional to show waf rejecting information. |
+
 **Output**
 |Type|Declaration|
 |:--:|:--:|
@@ -203,6 +217,7 @@
 |:--:|:--:|:--:|------|
 |tmp_queue|\<string\>|Y|The target queue. |
 |id_queue|\<string\>|Y|The useless parameter. |
+
 **Output**
 |Type|Declaration|
 |:--:|:--:|
@@ -214,6 +229,7 @@
 |Parameter|Type|Necessary|Declaration|
 |:--:|:--:|:--:|--|
 |None|None|None|None |
+
 **Output**
 |Type|Declaration|
 |:--:|:--:|
@@ -227,6 +243,7 @@
 |m_count|\<int>|Y|The num of runing thread, defined with default 20 but it was related with the count of targets. |
 |timeout|\<int>|Y|The interval of check the thread status. |
 |tmp_queue|\<Queue>|Y|The target queue to monitoring it's size. |
+
 **Output**
 |Type|Declaration|
 |:--:|:--:|
@@ -239,6 +256,7 @@
 |Parameter|Type|Necessary|Declaration|
 |:--:|:--:|:--:|------|
 |argv|\<list\>|Y|The args which was filtering by `run.py`. |
+
 **Output**
 |Type|Declaration|
 |:--:|:--:|
@@ -251,6 +269,7 @@
 |:--:|:--:|:--:|----------|
 |port|\<int\>|Y|The listener port of local host. |
 |keyword|\<string\>|N|The optional parameter. If keyword is None, the method will match all request and print it's ip:port on console. |
+
 **Output**
 |Type|Declaration|
 |:--:|:--:|
