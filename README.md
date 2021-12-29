@@ -76,13 +76,15 @@ Jndi Options:
 
 ## Function
 ### Directory
-`run.py` main code.
+`run.py` The main code.
+`dnslog.conf` The configuration of dnslog api
 `log` The folder to record the message of running.
 `module` The folder of scanner module.
 `result` The folder of scanner result
 ```
 Log4jScanner
 |   run.py
+|   dnslog.conf
 |
 +---log
 |       day2021_12_17.txt
