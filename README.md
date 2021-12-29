@@ -4,6 +4,7 @@
 
 
 ## Usage
+
 ```
 Usage:
     python run.py -m scan -t http://127.0.0.1 -p http://127.0.0.1:8080
@@ -75,12 +76,19 @@ Jndi Options:
 ```
 
 ## Function
+
 ### Directory
+
 `run.py` The main code.
-`dnslog.conf` The configuration of dnslog api
+
+`dnslog.conf` The configuration of dnslog api.
+
 `log` The folder to record the message of running.
+
 `module` The folder of scanner module.
+
 `result` The folder of scanner result
+
 ```
 Log4jScanner
 |   run.py
