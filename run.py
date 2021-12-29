@@ -57,6 +57,31 @@ if __name__ == '__main__':
     print(banner)
 
     try:
+        dns_config_err = "Can not load the dnslog config.\n" \
+                         "Need to complete the dnslog.conf first.\n" \
+                         "Example:\n" \
+                         "dnslog_url: http://dnslog.cn\n" \
+                         "dnslog_api: /api/getDnsData\n" \
+                         "dnslog_token: admin@admin"
+        dns_config = open("dnslog.conf", "r").read()
+        if "dnslog_url: \ndnslog_api:\ndnslog_token:" == dns_config:
+            raise Exception(dns_config_err)
+            exit()
+        else:
+            dns_config = dns_config.replace(" ", "").split('\n')
+            for config in dns_config:
+                if "dnslog_url" in config:
+                    if len(config.split(':')) < 3:
+                        raise Exception(dns_config_err)
+                    Log4j.dnslog_url = config.split(':')[-2] + config.split(':')[-1]
+                elif "dnslog_api" in config:
+                    if len(config.split(':')) < 2 or len(config.split(':')) < 3:
+                        raise Exception(dns_config_err)
+                    Log4j.dnslog_api = config.split(':')[-1]
+                elif "dnslog_token" in config:
+                    if len(config.split(':')) < 2 or len(config.split(':')) < 3:
+                        raise Exception(dns_config_err)
+                    Log4j.dnslog_token = config.split(':')[-1]
         if len(sys.argv[1]) == 1:
             raise Exception("No options")
         print(str(sys.argv))
@@ -82,4 +107,3 @@ if __name__ == '__main__':
         print(e)
         print(helper)
         logErr(" [MainError] " + str(e))
-
